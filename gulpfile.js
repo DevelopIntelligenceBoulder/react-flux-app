@@ -29,7 +29,7 @@ gulp.task("babel", function() {
 
 });
 
-gulp.task("webpack", function() {
+gulp.task("webpack", ["babel"], function() {
 
 	return gulp.src("./dist/www/js/site.js")
 		.pipe(webpack({
@@ -58,10 +58,10 @@ gulp.task("server", function() {
 	require("./index.js");
 });
 
-gulp.task("default", ["babel", "copy"], function () {
+gulp.task("default", ["sass", "webpack", "copy"], function () {
 
 	gulp.watch("src/www/css/site.scss", ["sass"]);
-	gulp.watch("src/www/js/**/*.jsx", ["babel","webpack"]);
+	gulp.watch("src/www/js/**/*.jsx", ["webpack"]);
 	gulp.watch(["src/www/**/*.html","src/**/*","!src/www/**/*"], ["copy"]);
 
 });
