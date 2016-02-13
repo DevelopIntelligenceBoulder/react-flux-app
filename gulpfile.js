@@ -62,6 +62,7 @@ gulp.task("default", ["sass", "webpack", "copy"], function () {
 
 	gulp.watch("src/www/css/site.scss", ["sass"]);
 	gulp.watch("src/www/js/**/*.jsx", ["webpack"]);
-	gulp.watch(["src/www/**/*.html","src/**/*","!src/www/**/*"], ["copy"]);
+	gulp.watch(["src/www/**/*.html"], ["copy"]);
+	gulp.watch(["src/**/*","!src/www/**/*"], ["copy"]);
 
 });

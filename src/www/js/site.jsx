@@ -7,8 +7,8 @@ const
 	WidgetsTable = require("./components/widgets-table"),
 	Footer = require("./components/footer");
 
-ReactDOM.render(<div>
+ReactDOM.render(<main>
 		<Header />
 		<WidgetsTable />
 		<Footer />
-	</div>, document.querySelector("main"));
+	</main>, document.querySelector("body > div:first-child"));
