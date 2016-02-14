@@ -17,7 +17,7 @@ gulp.task("sass", function() {
 
 gulp.task("babel", function() {
 
-	return gulp.src("src/www/js/**/*.jsx")
+	return gulp.src(["src/www/js/**/*.jsx","src/www/js/**/*.js"])
 		.pipe(babel({
 			plugins: ["transform-react-jsx"],
 			presets: ["es2015", "react"]
@@ -61,7 +61,7 @@ gulp.task("server", function() {
 gulp.task("default", ["sass", "webpack", "copy"], function () {
 
 	gulp.watch("src/www/css/site.scss", ["sass"]);
-	gulp.watch("src/www/js/**/*.jsx", ["webpack"]);
+	gulp.watch(["src/www/js/**/*.jsx","src/www/js/**/*.js"], ["webpack"]);
 	gulp.watch(["src/www/**/*.html"], ["copy"]);
 	gulp.watch(["src/**/*","!src/www/**/*"], ["copy"]);
 
