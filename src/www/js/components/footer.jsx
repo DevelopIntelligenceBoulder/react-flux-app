@@ -12,6 +12,7 @@ module.exports = class Footer extends React.Component {
 	render() {
 		return (
 			<footer>
+				Created for these <a href='http://www.sitepoint.com/author/ericgreene/'>SitePoint React Blog Posts</a>.
 				Distributed under the MIT License.
 			</footer>
 		);
