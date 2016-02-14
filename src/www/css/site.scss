@@ -1,25 +1,16 @@
-// body {
-// 	font-family: sans-serif;
-// 	font-size:100%;
-// }
-
-body > div > div {
-
-	> footer {
-		margin-top:10px;
-		text-align: center;
-		font-size: 1.2rem;
-	}
-
+footer {
+	margin-top:10px;
+	text-align: center;
+	font-size: 1.2rem;
 }
 
 label {
 	font-weight: normal;
-}
 
-label > span {
-	width:100px;
-	display:inline-block;
+	> span {
+		width:100px;
+		display:inline-block;
+	}
 }
 
 label > input, select, textarea {
@@ -29,6 +20,19 @@ label > input, select, textarea {
 section > div, section > form > div {
 	margin-top:10px;
 }
+
 button {
 	margin-right:10px;
+}
+
+button:last-child {
+	margin-right:0;
+}
+
+th {
+	text-align:center;
+}
+
+.center-text {
+	text-align:center;
 }

@@ -29,6 +29,10 @@ module.exports = class WidgetsTable extends React.Component {
 		return parseInt(e.target.getAttribute("data-widget-id"), 10);
 	}
 
+	_capitalize(s) {
+		return s.charAt(0).toUpperCase() + s.slice(1);
+	}
+
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextProps.widgets !== this.props.widgets;
 	}
@@ -51,10 +55,10 @@ module.exports = class WidgetsTable extends React.Component {
 						return (
 							<tr key={widget.id}>
 								<td>{widget.name}</td>
-								<td>{widget.color}</td>
-								<td>{widget.size}</td>
-								<td>{widget.quantity}</td>
-								<td>
+								<td className='center-text'>{this._capitalize(widget.color)}</td>
+								<td className='center-text'>{this._capitalize(widget.size)}</td>
+								<td className='center-text'>{widget.quantity}</td>
+								<td className='center-text'>
 									<button className="btn btn-link" data-widget-id={widget.id} onClick={this._onEditWidget}>Edit</button>
 									<button className="btn btn-link" data-widget-id={widget.id} onClick={this._onViewWidget}>View</button>
 								</td>
