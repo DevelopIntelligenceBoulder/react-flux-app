@@ -11,7 +11,7 @@ module.exports = class Header extends React.Component {
 
 	render() {
 		return (
-			<header>
+			<header className="page-header">
 				<h1>Widgets Demo App</h1>
 			</header>
 		);

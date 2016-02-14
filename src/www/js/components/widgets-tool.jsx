@@ -76,6 +76,7 @@ module.exports = class WidgetsTool extends React.Component {
 	_onDeleteWidget(widgetId, nextAction) {
 
 		let widgetIndex = this._getWidgetIndex(this._getWidget(widgetId));
+
 		this.setState({
 			widgets: this.state.widgets.delete(widgetIndex),
 			currentAction: nextAction || "table"
@@ -106,7 +107,7 @@ module.exports = class WidgetsTool extends React.Component {
 
 	render() {
 		return (<div>
-			<h2>Widgets Tool</h2>
+
 			{this._getView(this.state.currentAction)}
 		</div>);
 	}

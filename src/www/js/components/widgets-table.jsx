@@ -35,7 +35,8 @@ module.exports = class WidgetsTable extends React.Component {
 
 	render() {
 		return (<section>
-			<table>
+			<h2>Widgets Tool</h2>
+			<table className="table table-striped">
 				<thead>
 					<tr>
 						<th>Name</th>

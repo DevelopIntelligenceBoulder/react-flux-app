@@ -21,9 +21,7 @@ module.exports = class WidgetView extends React.Component {
 
 	render() {
 		return (<section>
-			<div>
-				<h2>View Widget</h2>
-			</div>
+			<h2>View Widget</h2>
 			<div>Name: {this.props.widget.name}</div>
 			<div>Description: {this.props.widget.description}</div>
 			<div>Color: {this.props.widget.color}</div>

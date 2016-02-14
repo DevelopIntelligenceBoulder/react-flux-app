@@ -32,7 +32,9 @@ module.exports = class WidgetEdit extends React.Component {
 	}
 
 	_onDelete() {
-		this.props.deleteWidget(this.state.widget.id);
+		if (confirm("Are you sure you want to delete this widget?")) {
+			this.props.deleteWidget(this.state.widget.id);
+		}
 	}
 
 	_onReturnToList() {
@@ -41,37 +43,48 @@ module.exports = class WidgetEdit extends React.Component {
 
 	render() {
 		return (<section><form>
-			<div>
-				<h2>Edit Widget</h2>
-			</div>
+			<h2>Edit Widget</h2>
 			<div>
 				<label>
-					Name
-					<input type="text" name="name" onChange={this._onChange} value={this.state.widget.name} />
+					<span>Name</span>
+					<input type="text" size="100" name="name" onChange={this._onChange} value={this.state.widget.name} />
 				</label>
 			</div>
 			<div>
 				<label>
-					Description
-					<input type="text" name="description" onChange={this._onChange} value={this.state.widget.description} />
+					<span>Description</span>
+					<textarea type="text" rows="4" cols="100" name="description" onChange={this._onChange} value={this.state.widget.description} />
 				</label>
 			</div>
 			<div>
 				<label>
-					Color
-					<input type="text" name="color" onChange={this._onChange} value={this.state.widget.color} />
+					<span>Color</span>
+					<select name="color" onChange={this._onChange} value={this.state.widget.color}>
+						<option value="red">Red</option>
+						<option value="blue">Blue</option>
+						<option value="green">Green</option>
+						<option value="orange">Orange</option>
+						<option value="yellow">Yellow</option>
+						<option value="purple">Purple</option>
+					</select>
 				</label>
 			</div>
 			<div>
 				<label>
-					Size
-					<input type="text" name="size" onChange={this._onChange} value={this.state.widget.size} />
+					<span>Size</span>
+					<select name="size" onChange={this._onChange} value={this.state.widget.size}>
+						<option value="tiny">Tiny</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+						<option value="huge">Huge</option>
+					</select>
 				</label>
 			</div>
 			<div>
 				<label>
-					Quantity
-					<input type="text" name="quantity" onChange={this._onChange} value={this.state.widget.quantity} />
+					<span>Quantity</span>
+					<input type="number" size="6" name="quantity" onChange={this._onChange} value={this.state.widget.quantity} />
 				</label>
 			</div>
 			<div>
