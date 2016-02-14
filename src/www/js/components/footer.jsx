@@ -1,21 +1,25 @@
 "use strict";
 
 const
-	React = require("react");
+	React = require("react"),
+	Footer = module.exports = class extends React.Component {
 
-module.exports = class Footer extends React.Component {
+		constructor(props) {
+			super(props);
+		}
 
-	constructor(props) {
-		super(props);
-	}
+		render() {
+			return <footer>
+					Created for these <a href={this.props.ownerUrl}>{this.props.ownerLabel}</a>.
+					Distributed under the <a href={this.props.licenseUrl}>{this.props.licenseLabel}</a>.
+				</footer>;
+		}
 
-	render() {
-		return (
-			<footer>
-				Created for these <a href='http://www.sitepoint.com/author/ericgreene/'>SitePoint React Blog Posts</a>.
-				Distributed under the <a href='https://opensource.org/licenses/MIT'>MIT License</a>.
-			</footer>
-		);
-	}
+	};
 
+Footer.defaultProps = {
+	ownerUrl: "http://www.sitepoint.com/author/ericgreene/",
+	ownerLabel: "SitePoint React Blog Posts",
+	licenseUrl: "https://opensource.org/licenses/MIT",
+	licenseLabel: "MIT License"
 };

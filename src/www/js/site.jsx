@@ -9,8 +9,6 @@ const
 
 ReactDOM.render(<div>
 		<Header />
-		<main>
-			<WidgetsTool />
-		</main>
+		<WidgetsTool />
 		<Footer />
 	</div>, document.querySelector("body > div:first-child"));

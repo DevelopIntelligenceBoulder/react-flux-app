@@ -29,7 +29,7 @@ module.exports = class WidgetsTool extends React.Component {
 	}
 
 	_prepareState(action, widgetId) {
-		return function(previousState, currentProps) {
+		return (previousState, currentProps) => {
 			return {
 				currentAction: action,
 				currentWidgetId: widgetId
@@ -84,9 +84,9 @@ module.exports = class WidgetsTool extends React.Component {
 	}
 
 	_getWidget(widgetId) {
-		return this.state.widgets.find(function(widget) {
+		return this.state.widgets.find((widget) => {
 			return widget.id === widgetId;
-		}.bind(this));
+		});
 	}
 
 	_getWidgetIndex(widget) {
@@ -96,7 +96,6 @@ module.exports = class WidgetsTool extends React.Component {
 	_getView(action) {
 		switch (action) {
 			case "view":
-				console.dir(this._getWidget(this.state.currentWidgetId));
 				return <WidgetView widget={this._getWidget(this.state.currentWidgetId) || {}} editWidget={this._onEditWidget} returnToList={this._onTableOfWidgets} />;
 			case "edit":
 				return <WidgetEdit widget={this._getWidget(this.state.currentWidgetId)} saveWidget={this._onSaveWidget} deleteWidget={this._onDeleteWidget} returnToList={this._onTableOfWidgets} />;
@@ -106,10 +105,7 @@ module.exports = class WidgetsTool extends React.Component {
 	}
 
 	render() {
-		return (<div>
-
-			{this._getView(this.state.currentAction)}
-		</div>);
+		return <main>{this._getView(this.state.currentAction)}</main>;
 	}
 
 };

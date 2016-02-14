@@ -10,7 +10,10 @@ module.exports = class WidgetEdit extends React.Component {
 		super(props);
 
 		this.state = {
-			widget: objectAssign({}, this.props.widget)
+			widget: objectAssign({
+				color: "red",
+				size: "tiny"
+			}, this.props.widget)
 		};
 
 		this._onChange = this._onChange.bind(this);
@@ -42,7 +45,7 @@ module.exports = class WidgetEdit extends React.Component {
 	}
 
 	render() {
-		return (<section><form>
+		return <section><form>
 			<h2>Edit Widget</h2>
 			<div>
 				<label>
@@ -92,7 +95,7 @@ module.exports = class WidgetEdit extends React.Component {
 				<button type="button" className="btn btn-danger" onClick={this._onDelete}>Delete</button>
 				<button type="button" className="btn btn-default" onClick={this._onReturnToList}>Return to List</button>
 			</div>
-		</form></section>);
+		</form></section>;
 	}
 
 };

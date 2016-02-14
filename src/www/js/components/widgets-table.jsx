@@ -30,6 +30,7 @@ module.exports = class WidgetsTable extends React.Component {
 	}
 
 	_capitalize(s) {
+		s = String(s);
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	}
 
@@ -38,7 +39,7 @@ module.exports = class WidgetsTable extends React.Component {
 	}
 
 	render() {
-		return (<section>
+		return <section>
 			<h2>Widgets Tool</h2>
 			<table className="table table-striped">
 				<thead>
@@ -51,7 +52,7 @@ module.exports = class WidgetsTable extends React.Component {
 					</tr>
 				</thead>
 				<tbody>
-					{this.props.widgets.map(function(widget) {
+					{this.props.widgets.map((widget) => {
 						return (
 							<tr key={widget.id}>
 								<td>{widget.name}</td>
@@ -64,11 +65,11 @@ module.exports = class WidgetsTable extends React.Component {
 								</td>
 							</tr>
 						);
-					}.bind(this))}
+					})}
 				</tbody>
 			</table>
 			<button className="btn btn-primary" onClick={this._onCreateWidget}>Create Widget</button>
-		</section>);
+		</section>;
 	}
 
 };
