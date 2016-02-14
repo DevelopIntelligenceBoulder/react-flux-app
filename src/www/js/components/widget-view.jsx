@@ -7,9 +7,32 @@ module.exports = class WidgetView extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this._onEdit = this._onEdit.bind(this);
+		this._onReturnToList = this._onReturnToList.bind(this);
+	}
+
+	_onEdit() {
+		this.props.editWidget(this.props.widget.id);
+	}
+
+	_onReturnToList() {
+		this.props.returnToList();
 	}
 
 	render() {
-		return (<div>View {this.props.widget.name}</div>);
+		return (<section>
+			<div>
+				<h2>View Widget</h2>
+			</div>
+			<div>Name: {this.props.widget.name}</div>
+			<div>Description: {this.props.widget.description}</div>
+			<div>Color: {this.props.widget.color}</div>
+			<div>Size: {this.props.widget.size}</div>
+			<div>Quantity: {this.props.widget.quantity}</div>
+			<div>
+				<button type="button" className="btn btn-primary" onClick={this._onEdit}>Edit</button>
+				<button type="button" className="btn btn-default" onClick={this._onReturnToList}>Return to List</button>
+			</div>
+		</section>);
 	}
 };

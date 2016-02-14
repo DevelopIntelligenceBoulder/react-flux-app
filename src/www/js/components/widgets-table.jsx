@@ -7,24 +7,34 @@ module.exports = class WidgetsTable extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this._editWidget = this._editWidget.bind(this);
-		this._viewWidget = this._viewWidget.bind(this);
+
+		this._onEditWidget = this._onEditWidget.bind(this);
+		this._onViewWidget = this._onViewWidget.bind(this);
+		this._onCreateWidget = this._onCreateWidget.bind(this);
 	}
 
-	_editWidget(e) {
+	_onEditWidget(e) {
 		this.props.editWidget(this._parseWidgetId(e));
 	}
 
-	_viewWidget(e) {
+	_onViewWidget(e) {
 		this.props.viewWidget(this._parseWidgetId(e));
+	}
+
+	_onCreateWidget() {
+		this.props.editWidget();
 	}
 
 	_parseWidgetId(e) {
 		return parseInt(e.target.getAttribute("data-widget-id"), 10);
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.widgets !== this.props.widgets;
+	}
+
 	render() {
-		return (
+		return (<section>
 			<table>
 				<thead>
 					<tr>
@@ -44,15 +54,16 @@ module.exports = class WidgetsTable extends React.Component {
 								<td>{widget.size}</td>
 								<td>{widget.quantity}</td>
 								<td>
-									<button data-widget-id={widget.id} onClick={this._editWidget}>Edit</button>
-									<button data-widget-id={widget.id} onClick={this._viewWidget}>View</button>
+									<button className="btn btn-link" data-widget-id={widget.id} onClick={this._onEditWidget}>Edit</button>
+									<button className="btn btn-link" data-widget-id={widget.id} onClick={this._onViewWidget}>View</button>
 								</td>
 							</tr>
 						);
 					}.bind(this))}
 				</tbody>
 			</table>
-		);
+			<button className="btn btn-primary" onClick={this._onCreateWidget}>Create Widget</button>
+		</section>);
 	}
 
 };

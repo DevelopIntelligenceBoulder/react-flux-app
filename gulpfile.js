@@ -46,6 +46,9 @@ gulp.task("webpack", ["babel"], function() {
 
 gulp.task("copy", function() {
 
+	gulp.src("node_modules/bootstrap/dist/css/**/*")
+		.pipe(gulp.dest("dist/www/css"));
+
 	gulp.src("src/www/**/*.html")
 		.pipe(gulp.dest("dist/www"));
 
@@ -62,6 +65,7 @@ gulp.task("default", ["sass", "webpack", "copy"], function () {
 
 	gulp.watch("src/www/css/site.scss", ["sass"]);
 	gulp.watch(["src/www/js/**/*.jsx","src/www/js/**/*.js"], ["webpack"]);
+	gulp.watch(["node_modules/bootstrap/dist/css/**/*"], ["copy"]);
 	gulp.watch(["src/www/**/*.html"], ["copy"]);
 	gulp.watch(["src/**/*","!src/www/**/*"], ["copy"]);
 
